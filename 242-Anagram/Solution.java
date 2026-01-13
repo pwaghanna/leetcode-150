@@ -1,0 +1,27 @@
+import java.util.HashMap;
+class Solution
+{
+    public boolean isAnagram(String s, String t)
+    {
+        if(s.length()!=t.length())
+        {
+            return false;
+        }
+        HashMap<Character,Integer> s_map=new HashMap<>();
+        HashMap<Character,Integer> t_map=new HashMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            s_map.put(s.charAt(i),s_map.getOrDefault(s.charAt(i),0)+1);
+            t_map.put(t.charAt(i),t_map.getOrDefault(t.charAt(i),0)+1);
+        }
+        for(char c:s_map.keySet())
+        {
+            if(s_map.get(c).intValue()!=t_map.getOrDefault(c,0).intValue())
+            {
+                return false;
+            }
+        }
+       
+        return true;
+    }
+}
